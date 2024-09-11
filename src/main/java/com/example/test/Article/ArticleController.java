@@ -25,6 +25,13 @@ public class ArticleContoller {
 
     @GetMapping(value = "/article/detail/{id}")
     public String detail(Model model, @PathVariable("id") Integer id) {
+        Article article = this.articleService.getArticle(id);
+        model.addAttribute("article", article);
         return "article_detail";
+    }
+
+    @GetMapping("/article/create")
+    public String articleCreate(){
+        return "article_form";
     }
 }
